@@ -1,0 +1,8 @@
+<h6>DETALLE DEL PRODUCTO {{productCode}}</h6>
+<hr>
+<p *ngIf="product != null">CODIGO: {{product.code}}</p>
+<p *ngIf="product != null">PAIS:{{product.country}}</p>
+<p *ngIf="product != null">DESCRIPCION: {{product.description}}</p>
+<p *ngIf="product != null">COMESTIBLE: {{product.edible}}</p>
+<p *ngIf="product != null">PRECIO: ${{product.price}}</p>
+<p *ngIf="product != null">STOCK: {{product.stock}}</p>

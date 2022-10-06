@@ -30,9 +30,7 @@ export class AuthService {
 
   userData: any; // Save logged in user data
   now = new Date();
-  isLogin = false;    
-  roleAs: string | "";
-
+ 
   constructor(private auth: Auth,
               public afAuth: AngularFireAuth,
               public afs: AngularFirestore, // Inject Firebase auth service
@@ -41,10 +39,8 @@ export class AuthService {
       if (user) {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user')!);        
       } else {
         localStorage.setItem('user', 'null');
-        JSON.parse(localStorage.getItem('user')!);
       }
     });
   }
@@ -52,12 +48,7 @@ export class AuthService {
   login({ email, password }: LoginData) {
     return signInWithEmailAndPassword(this.auth, email, password)
     .then((result) => {      
-      this.SetUserData(result.user);
-      this.isLogin = true;
-      this.roleAs = this.userData.role;
-      localStorage.setItem('STATE', 'true');
-      localStorage.setItem('ROLE', this.roleAs)
-      return of({ success: this.isLogin, role: this.roleAs });
+      this.SetUserData(result.user);     
     })
   }
 
@@ -65,11 +56,6 @@ export class AuthService {
     return signInWithPopup(this.auth, new GoogleAuthProvider())
     .then((result) => {
       this.SetUserData(result.user);
-      this.isLogin = true;
-      this.roleAs = this.userData.role;
-      localStorage.setItem('STATE', 'true');
-      localStorage.setItem('ROLE', this.roleAs)
-      return of({ success: this.isLogin, role: this.roleAs });
     })
   }
 
@@ -87,12 +73,7 @@ export class AuthService {
   logout() {
     return signOut(this.auth)
     .then((result) => {
-      localStorage.removeItem('user');
-      this.isLogin = false;
-      this.roleAs = '';
-      localStorage.setItem('STATE', 'false');
-      localStorage.setItem('ROLE', '');
-      return of({ success: this.isLogin, role: '' });
+      localStorage.removeItem('user');      
     })
   }
 
@@ -136,7 +117,7 @@ export class AuthService {
     return this.afs.collection('users-registry').doc(this.auth.currentUser.uid).valueChanges();
   }
 
-  SetProduct(data: any) {
+  setProduct(data: any) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `products/${data.code}`
     );
@@ -153,5 +134,53 @@ export class AuthService {
     return userRef.set(survey, {
       merge: true,
     });
+  }
+
+  getAllProducts() {
+    const data = [];
+    return firebase.firestore().collection('products')
+                               .get()
+                               .then((querySnapshot) => {
+                                 querySnapshot.forEach((doc) => {
+                                  data.push(doc.data());
+                                });
+                                 return data;
+                               })
+                               .catch((error) => {
+                                 console.log("Error getting documents: ", error);
+                               });
+  }
+
+  getProductData(code: any) {
+    const data = [];
+    return firebase.firestore().collection('products')
+                               .where('code', '==', code)                               
+                               .get()
+                               .then((querySnapshot) => {
+                                 querySnapshot.forEach((doc) => {
+                                  data.push(doc.data());
+                                 });
+                                 return data;
+                               })
+                               .catch((error) => {
+                                 console.log("Error getting documents: ", error);
+                               });
+  }
+
+  getProductCountry(code: any) {
+    var data;
+    return firebase.firestore().collection('scores')
+                               .where('code', '==', code)
+                               .limit(1)
+                               .get()
+                               .then((querySnapshot) => {
+                                 querySnapshot.forEach((doc) => {
+                                     data = doc.data()['country'];
+                                 });
+                                 return data;
+                               })
+                               .catch((error) => {
+                                 console.log("Error getting documents: ", error);
+                               });
   }
 }

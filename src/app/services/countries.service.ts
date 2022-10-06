@@ -10,5 +10,9 @@ export class CountriesService {
 
   getCountries() { 
     return this.http.get("https://restcountries.com/v3.1/region/ame");
+  } 
+  
+  getCountryByName(name:any) { 
+    return this.http.get("https://restcountries.com/v3.1/name/{{name}}");
   }   
 }

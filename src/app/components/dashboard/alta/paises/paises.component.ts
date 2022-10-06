@@ -9,7 +9,7 @@ import { Output, EventEmitter } from '@angular/core';
 })
 export class PaisesComponent implements OnInit {
 
-  @Output() newItemEvent = new EventEmitter<string>();
+  @Output() newCountryEvent = new EventEmitter<string>();
 
   data: any = [];
   selectedCountry = 'Argentina';
@@ -30,6 +30,6 @@ export class PaisesComponent implements OnInit {
   selectCountry(e) {
     console.log(e.target.value);
     this.selectedCountry = e.target.value;
-    this.newItemEvent.emit(this.selectedCountry);
+    this.newCountryEvent.emit(this.selectedCountry);
   }
 }

@@ -1,0 +1,18 @@
+<div class="container py-4">
+   
+   <div class="p-5 mb-4 bg-light rounded-3">
+      <app-lista (selectedProductEvent)="selectedProduct($event)"></app-lista>
+    </div>
+
+    <div class="row align-items-md-stretch">
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+          <app-detalle-producto [productCode]="productCode"></app-detalle-producto>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-light border rounded-3">
+          <app-detalle-pais [productCode]="productCode"></app-detalle-pais>
+        </div>
+      </div>
+    </div>

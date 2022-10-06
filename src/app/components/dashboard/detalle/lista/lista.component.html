@@ -1,0 +1,34 @@
+<h6>PRODUCTOS</h6>
+
+<table class="table text-center" >   
+
+    <thead>
+      <tr>
+        <th scope="col">CODIGO</th>
+        <th scope="col">PAIS</th>
+        <th scope="col">DESCRIPCION</th>
+        <th scope="col">COMESTIBLE</th>
+        <th scope="col">PRECIO</th>
+        <th scope="col">STOCK</th>
+        <th scope="col">DETALLE</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let product of products">
+
+        <td>{{product.code}}</td>
+        <td>{{product.country}}</td>
+        <td>{{product.description}}</td>
+        <td><div *ngIf="product.edible; else elseBlock">SI</div><ng-template #elseBlock>NO</ng-template></td>
+        <td>{{product.price}}</td>
+        <td>{{product.stock}}</td>
+        <td>
+            <button type="button" 
+            class="btn btn-outline-success"
+            style="width: 75%;"
+            value="{{product.code}}"
+            (click)="selectProduct($event)" >VER</button>
+        </td>
+</tr>
+
+  </table>
+

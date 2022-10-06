@@ -32,7 +32,7 @@ export class FormComponent implements OnInit {
     this.form.contains('country') ? this.form.get('country').setValue(this.country) 
                                   : this.form.addControl('country', this.fb.control(this.country)); 
     if(this.form.valid) {
-    this.auth.SetProduct(this.form.value);
+    this.auth.setProduct(this.form.value);
       this.toastr.success('Producto cargado con éxito', '', {
         timeOut: 1500,
         positionClass: 'toast-center-center',      
