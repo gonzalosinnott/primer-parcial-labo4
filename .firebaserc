@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "primer-parcial-sinnott-gonzalo"
+  },
+  "targets": {
+    "primer-parcial-sinnott-gonzalo": {
+      "hosting": {
+        "parcial-pizzas": [
+          "primer-parcial-sinnott-gonzalo"
+        ]
+      }
+    }
+  }
+}

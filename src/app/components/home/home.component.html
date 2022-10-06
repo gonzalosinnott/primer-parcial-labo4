@@ -1,0 +1,44 @@
+<body class="d-flex">
+    <div class="d-flex flex-column justify-content-center">
+
+        <div class="d-flex p-3 flex-column">
+            <header class="mb-auto">
+                <div>
+                    <h3>1° PARCIAL LABORATORIO 4</h3>
+                </div>
+            </header>
+            <main class="px-3">
+                <h1></h1>
+                <div class="row align-items-md-stretch">
+                    <div class="col-3">
+                        <img class="img-thumbnail img-fluid" src="{{this.image}}" alt="profile">
+                    </div>
+                    <div class="col-9">
+                        <div class="card w-150">
+                            <div class="card-body">
+                                <h5 class="card-title">{{this.name}}</h5>
+                                <p class="card-text">Bio: {{this.bio}}</p>
+                                <a href="{{this.linkedin}}" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer">
+                                    <i class="bi bi-linkedin" style="font-size: 2rem; padding: 5px;"></i>
+                                </a>
+                                <a href="{{this.github}}" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer">
+                                    <i class="bi bi-github" style="font-size: 2rem; padding: 5px;"></i>
+                                </a>
+                            </div>                            
+                        </div>
+                        <br>
+                        <div style="text-align: center;">
+                            <button type="button" 
+                                        class="btn btn-primary"
+                                        style="width: 75%;"
+                                        routerLink="./login" >INGRESAR</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>

@@ -1,0 +1,69 @@
+<div class="row align-items-md-stretch">
+    <div class="col-md-8">
+        <form class="form was-validated" [formGroup]="form">
+            <div class="row align-items-md-stretch">
+                <div class="form-group col-md-4">
+                    <label for="code" class="form-label">CODIGO</label>
+                    <input type="code" class="form-control" id="code" aria-describedby="code" required=""
+                        formControlName="code">
+                    <div class="invalid-feedback">
+                        Ingrese codigo del producto.
+                    </div>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="price" class="form-label">PRECIO</label>
+                    <input type="number" class="form-control" id="price" aria-describedby="price" required="" min="1"
+                        max="9999999999" formControlName="price">
+                    <div class="invalid-feedback">
+                        Ingrese precio del producto.
+                    </div>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="stock" class="form-label">STOCK</label>
+                    <input type="number" class="form-control" id="stock" aria-describedby="stock" required="" min="0"
+                        max="999999" formControlName="stock">
+                    <div class="invalid-feedback">
+                        Ingrese stock del producto.
+                    </div>
+                </div>
+
+
+            </div>
+
+            <br>
+
+            <div class="row align-items-md-stretch">
+                <div class="form-group col-md-8">
+                    <div class="form-group">
+                        <label for="desc">DESCRIPCION</label>
+                        <textarea class="form-control" id="desc" rows="3" required="" formControlName="desc"></textarea>
+                        <div class="invalid-feedback">
+                            Ingrese una descripción.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group col-md-3">
+                <div class="form-group form-check form-switch">
+                    <label class="edible" for="edible">Comestible</label>
+                    <input class="form-check-input" type="checkbox" id="edible" formControlName="edible">
+                </div>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary" style="width: 80%;" (click)="onSubmit()">ENVIAR</button>
+            </div>
+        </form>
+
+    </div>
+
+
+    <div class="col-md-4" style="text-align: center;">
+        <app-paises (newItemEvent)="selectCountry($event)"></app-paises>
+    </div>
+</div>

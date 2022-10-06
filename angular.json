@@ -25,7 +25,11 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "./node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -94,8 +98,21 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "parcial-pizzas:build:production",
+            "firebaseProject": "primer-parcial-sinnott-gonzalo",
+            "firebaseHostingSite": "primer-parcial-sinnott-gonzalo"
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

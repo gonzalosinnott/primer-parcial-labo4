@@ -1,0 +1,15 @@
+<h6>PAIS DE ORIGEN</h6>
+
+<ul class="list-group mb-3">
+    <li class="list-group-item d-flex justify-content-between lh-sm" *ngFor="let country of data">  
+      <input class="form-check-input" 
+             type="radio" 
+             name="country" 
+             value="{{country.name.common}}"
+             (change)="selectCountry($event)">   
+      <div >
+        <small class="text-muted">{{country.name.common}}</small>
+      </div>
+      <img style="width: 30px" src="{{country.flags.png}}" alt="flag">
+    </li>
+</ul>
